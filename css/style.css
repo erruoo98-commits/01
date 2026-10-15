@@ -1,0 +1,1164 @@
+/* A·O·T·U F/W 2026 — responsive editorial storefront */
+
+/* 공통 변수: 기본 색상과 테마 설정 */
+:root{
+    --ink:#171615;
+    --brown:#514a43;
+    --muted:#77736f;
+    --paper:#fff;
+    --line:#d9d5d1;
+}
+
+/* 기본 문서 설정 및 부드러운 스크롤 */
+html{
+    scroll-behavior:smooth;
+}
+
+body {
+    font-family:'Montserrat',Arial,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    overflow-x:hidden;
+    font-size:12px;
+    font-weight:400;
+}
+
+img {
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+
+a,button {
+    -webkit-tap-highlight-color:transparent;
+}
+
+a {
+    cursor:pointer;
+}
+
+/* 상단 프로모션 띠: 문구가 가로로 흐르는 영역 */
+.announcement{
+    height:24px;
+    background:var(--brown);
+    color:#fff;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    white-space:nowrap;
+}
+
+/* 프로모션 문구 트랙과 무한 이동 애니메이션 */
+.announcement-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 30s linear infinite;
+}
+
+.announcement-track span {
+    font-size:8px;
+    letter-spacing:1.6px;
+    padding-right:0;
+    flex-shrink:0;
+}
+
+@keyframes marquee {
+    to {
+        transform:translateX(-33.3333%);
+    }
+}
+
+/* 헤더: 로고, 메뉴, 아이콘 배치 */
+.site-header{
+    height:70px;
+    padding:0 4.3%;
+    display:flex;
+    align-items:center;
+    gap:30px;
+    background:#fff;
+    position:relative;
+    z-index:10;
+}
+
+.brand {
+    width:95px;
+    flex:0 0 95px;
+}
+
+.brand img {
+    width:100%;
+}
+
+/* 데스크톱 메뉴와 헤더 아이콘 */
+.main-nav,.secondary-nav,.header-icons {
+    display:flex;
+    align-items:center;
+}
+
+.main-nav {
+    gap:25px;
+}
+
+.secondary-nav {
+    margin-left:auto;
+    gap:25px;
+}
+
+.main-nav a,.secondary-nav a {
+    font-size:10px;
+    transition:opacity .2s;
+}
+
+.header-icons {
+    gap:16px;
+    margin-left:0;
+}
+
+.header-icons a {
+    width:17px;
+    height:17px;
+    display:grid;
+    place-items:center;
+}
+
+.header-icons img {
+    width:15px;
+    height:15px;
+    object-fit:contain;
+}
+
+.main-nav a:hover,.secondary-nav a:hover,.footer-inner a:hover {
+    opacity:.55;
+}
+
+.mobile-menu-btn,.mobile-nav {
+    display:none;
+}
+
+/* 메인 비주얼: 첫 화면의 큰 이미지와 소개 문구 */
+.hero{
+    height:min(61vw,700px);
+    min-height:490px;
+    position:relative;
+    overflow:hidden;
+    background:#f3f1f1;
+}
+
+/* 메인 이미지와 텍스트 위치 */
+.hero-image{
+    position:absolute;
+    width:100%;
+    height:100%;
+    inset:0;
+    object-fit:cover;
+    object-position:center 42%;
+}
+
+.hero-copy {
+    position:absolute;
+    left:65%;
+    top:20%;
+    width:30%;
+    max-width:440px;
+}
+
+.eyebrow {
+    font-size:10px;
+    letter-spacing:.06em;
+}
+
+.hero-copy .eyebrow {
+    margin-bottom:25px;
+}
+
+.hero h1 {
+    font-size:clamp(28px,3.2vw,48px);
+    line-height:1.14;
+    font-weight:600;
+    letter-spacing:-.045em;
+}
+
+.hero-description {
+    font-size:10px;
+    line-height:1.7;
+    color:#55504e;
+    margin:24px 0 20px;
+}
+
+.text-link,.mini-link,.view {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid #aaa5a1;
+    padding:7px 10px;
+    font-size:9px;
+    transition:background .2s,color .2s,border-color .2s;
+}
+
+.text-link:hover,.mini-link:hover,.view:hover,.art-link:hover {
+    background:var(--brown);
+    color:#fff;
+    border-color:var(--brown);
+}
+
+.hero-signature {
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    letter-spacing:.16em;
+    margin-top:38px;
+}
+
+/* 스트리트 스토리: 룩 이미지와 중앙 소개 문구 */
+.street-story{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    background:#fff;
+}
+
+/* 스트리트 스토리 이미지 및 캡션 */
+.street-image{
+    width:100%;
+    height:auto;
+}
+
+.street-caption {
+    position:absolute;
+    top:27%;
+    left:39%;
+    width:25%;
+    text-align:center;
+}
+
+.street-caption .eyebrow {
+    font-size:clamp(13px,1.8vw,24px);
+    font-weight:500;
+    letter-spacing:-.02em;
+}
+
+.street-caption h2 {
+    font-size:clamp(13px,1.65vw,22px);
+    font-weight:600;
+    line-height:1.25;
+    margin:5px 0 18px;
+    white-space:nowrap;
+}
+
+.street-caption>p:not(.eyebrow):not(.season-note) {
+    font-size:clamp(6px,.65vw,9px);
+    line-height:1.7;
+    color:#5f5a56;
+}
+
+.season-note {
+    font-size:clamp(7px,.75vw,10px);
+    font-weight:600;
+    margin:20px 0 12px;
+}
+
+.mini-link {
+    font-size:8px;
+    padding:5px 8px;
+}
+
+/* 상품 섹션: 상품 카드가 가로로 천천히 이동 */
+.shop-section{
+    padding:20px 0 38px;
+    overflow:hidden;
+}
+
+/* 상품 슬라이드: 창 영역, 트랙, 카드, 상품 정보 */
+.product-window{
+    overflow:hidden;
+    width:100%;
+}
+
+.product-track {
+    display:flex;
+    gap:clamp(12px,2vw,30px);
+    width:max-content;
+    padding:0 2.5%;
+    animation:product-drift 48s linear infinite;
+    will-change:transform;
+}
+
+.product-window:hover .product-track {
+    animation-play-state:paused;
+}
+
+@keyframes product-drift {
+    0% {
+        transform:translateX(0);
+    }
+    100% {
+        transform:translateX(-50%);
+    }
+}
+
+.product-card {
+    flex:0 0 clamp(130px,17.5vw,250px);
+    width:clamp(130px,17.5vw,250px);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.product-image {
+    width:100%;
+    height:clamp(135px,18vw,255px);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+.product-image img {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    transition:transform .4s;
+}
+
+.product-image:hover img {
+    transform:translateY(-5px);
+}
+
+.product-number {
+    font-size:11px;
+    margin-top:9px;
+}
+
+.product-card h3 {
+    font-size:11px;
+    margin-top:5px;
+    white-space:nowrap;
+}
+
+.product-card p {
+    font-size:10px;
+    margin-top:6px;
+}
+
+.product-card .view {
+    border:0;
+    border-bottom:1px solid #c8c4c0;
+    padding:5px 0 3px;
+    margin-top:5px;
+    font-size:9px;
+    color:#777;
+}
+
+.product-card .view:hover {
+    color:#171615;
+    border-color:#171615;
+    background:transparent;
+}
+
+/* 컬렉션 섹션: 시즌 제목과 모델 이미지 */
+.collection{
+    padding:4px 0 38px;
+}
+
+/* 컬렉션 제목과 시즌 텍스트 */
+.collection-heading{
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.collection-heading .eyebrow {
+    margin-bottom:9px;
+}
+
+.collection-heading h2 {
+    font-size:clamp(30px,4vw,52px);
+    font-weight:400;
+    letter-spacing:.02em;
+}
+
+.collection-heading>p:last-child {
+    font-size:10px;
+    margin-top:7px;
+}
+
+.collection-art {
+    position:relative;
+    width:100%;
+    line-height:0;
+}
+
+.collection-art>img {
+    width:100%;
+    height:auto;
+}
+
+/* 컬렉션 이미지 위에 놓이는 링크 버튼 */
+.art-link{
+    position:absolute;
+    line-height:1;
+    display:inline-block;
+    padding:6px 9px;
+    border:1px solid #d4d0cc;
+    background:#fff;
+    font-size:9px;
+    transition:all .2s;
+}
+
+.link-left {
+    left:5%;
+    top:40%;
+}
+
+.link-mid {
+    left:35%;
+    top:27%;
+}
+
+.link-pants {
+    left:61%;
+    top:47%;
+}
+
+.link-right {
+    right:5%;
+    top:29%;
+}
+
+.link-detail {
+    right:25%;
+    bottom:18%;
+}
+
+/* NEW CHAPTER: 에디토리얼 이미지와 안내 문구 */
+.new-chapter{
+    position:relative;
+    width:100%;
+    line-height:0;
+}
+
+.new-chapter>img {
+    width:100%;
+    height:auto;
+}
+
+/* NEW CHAPTER 텍스트 및 VIEW 링크 */
+.chapter-copy{
+    position:absolute;
+    left:46%;
+    top:9%;
+    line-height:1.3;
+    max-width:42%;
+}
+
+.chapter-copy .eyebrow {
+    font-size:clamp(12px,1.8vw,23px);
+    font-weight:600;
+}
+
+.chapter-copy h2 {
+    font-size:clamp(10px,1.2vw,16px);
+    font-weight:500;
+    margin-top:4px;
+}
+
+.chapter-view {
+    position:absolute;
+    right:5%;
+    top:9%;
+    font-size:10px;
+    line-height:1;
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.chapter-view:hover {
+    opacity:.55;
+}
+
+/* 디테일 에디토리얼: 겹쳐진 사진과 스타일 설명 */
+.details-section{
+    display:grid;
+    grid-template-columns:55% 45%;
+    align-items:center;
+    gap:0;
+    padding:5.5vw 6.5% 4vw;
+    max-width:1440px;
+    margin:0 auto;
+}
+
+/* 사진 콜라주와 오른쪽 스타일 노트 */
+.detail-collage{
+    position:relative;
+    width:100%;
+    aspect-ratio:1.04;
+}
+
+.detail-photo {
+    position:absolute;
+    object-fit:cover;
+    padding:8px;
+    background:#fff;
+    box-shadow:0 2px 12px #0002;
+}
+
+.photo-one {
+    width:56%;
+    left:8%;
+    top:0;
+    z-index:1;
+}
+
+.photo-two {
+    width:55%;
+    left:35%;
+    top:19%;
+    z-index:2;
+}
+
+.photo-three {
+    width:48%;
+    left:10%;
+    top:42%;
+    z-index:3;
+}
+
+.photo-four {
+    width:58%;
+    left:30%;
+    top:64%;
+    z-index:1;
+}
+
+.details-copy {
+    padding-left:8%;
+    align-self:center;
+}
+
+.details-copy>.eyebrow {
+    font-size:10px;
+    margin-bottom:25px;
+}
+
+.details-copy h2 {
+    font-size:clamp(22px,2.3vw,32px);
+    font-weight:500;
+    line-height:1.2;
+    margin-bottom:24px;
+}
+
+.detail-description {
+    font-size:clamp(10px,.9vw,13px);
+    line-height:1.8;
+    color:#777;
+    margin-bottom:30px;
+}
+
+.details-copy h3 {
+    font-size:10px;
+    font-weight:600;
+    margin-bottom:13px;
+}
+
+.details-copy ul {
+    font-size:10px;
+    line-height:1.8;
+}
+
+.qr-link {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:28px;
+    width:max-content;
+    max-width:100%;
+}
+
+.qr-link img {
+    width:72px;
+    height:72px;
+    object-fit:contain;
+}
+
+.qr-link span {
+    font-size:9px;
+    line-height:1.7;
+    color:#8a8581;
+}
+
+.qr-link:hover {
+    opacity:.6;
+}
+
+/* 아카이브 배너: 화면 전체 폭의 협업 이미지 */
+.archive-banner{
+    position:relative;
+    width:100%;
+    line-height:0;
+    color:white;
+    overflow:hidden;
+}
+
+.archive-banner>img {
+    width:100%;
+    height:auto;
+}
+
+/* 아카이브 배너 위 중앙 텍스트 */
+.archive-copy{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    text-shadow:0 1px 8px #0005;
+}
+
+.archive-copy p {
+    font-size:clamp(10px,1.4vw,20px);
+    letter-spacing:.15em;
+    margin-bottom:40px;
+}
+
+.archive-copy h2 {
+    font-size:clamp(30px,5vw,68px);
+    letter-spacing:.12em;
+    font-weight:600;
+}
+
+.archive-copy span {
+    font-size:clamp(10px,1.4vw,20px);
+    letter-spacing:.15em;
+    margin-top:50px;
+}
+
+/* 푸터: 브랜드 소개, 링크, SNS, 저작권 */
+.site-footer{
+    background:var(--brown);
+    color:#f5f1ed;
+}
+
+/* 푸터 내부 열 레이아웃 */
+.footer-inner{
+    padding:55px 5.5% 48px;
+    display:grid;
+    grid-template-columns:2.1fr 1fr 1.2fr 1fr;
+    gap:7%;
+}
+
+.footer-brand>img {
+    width:175px;
+    height:72px;
+    object-fit:contain;
+    object-position:left center;
+    margin-bottom:22px;
+}
+
+.footer-brand p {
+    font-size:10px;
+    line-height:1.8;
+    color:#d9d4ce;
+    max-width:280px;
+}
+
+.footer-brand p+p {
+    margin-top:16px;
+}
+
+.footer-links,.footer-social {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.footer-links h3,.footer-social h3 {
+    font-size:10px;
+    margin:7px 0 10px;
+}
+
+.footer-links a {
+    font-size:10px;
+    color:#d9d4ce;
+    transition:opacity .2s;
+}
+
+.footer-social>div {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.footer-social img {
+    width:18px;
+    height:18px;
+    object-fit:contain;
+}
+
+.copyright {
+    border-top:1px solid #827970;
+    text-align:center;
+    padding:18px 15px;
+    font-size:9px;
+    color:#d9d4ce;
+}
+
+/* 대형 데스크톱 화면 대응 */
+@media(min-width:1441px) {
+    .hero {
+        height:868px;
+    }
+    .hero-image {
+        object-fit:cover;
+    }
+}
+
+/* 태블릿 및 작은 노트북 화면 대응 */
+@media(max-width:900px) {
+    .site-header {
+        height:64px;
+        padding:0 5%;
+        gap:0;
+        justify-content:space-between;
+    }
+    .brand {
+        width:82px;
+        flex-basis:82px;
+    }
+    .main-nav,.secondary-nav {
+        display:none;
+    }
+    .mobile-menu-btn {
+        display:flex;
+        order:-1;
+        width:24px;
+        height:24px;
+        background:transparent;
+        flex-direction:column;
+        justify-content:center;
+        gap:5px;
+        cursor:pointer;
+    }
+    .mobile-menu-btn span {
+        width:19px;
+        height:1px;
+        background:#171615;
+        display:block;
+    }
+    .header-icons {
+        margin-left:auto;
+        gap:15px;
+        order:1;
+    }
+    .brand {
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+    .mobile-menu-btn {
+        z-index:2;
+    }
+    .mobile-nav {
+        display:flex;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        flex-direction:column;
+        background:#fff;
+        padding:0 6%;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .3s,padding .3s;
+        box-shadow:0 8px 14px #0000000d;
+    }
+    .mobile-nav.open {
+        max-height:260px;
+        padding:18px 6% 22px;
+        gap:20px;
+    }
+    .mobile-nav a {
+        font-size:12px;
+    }
+    .hero {
+        height:76vw;
+        min-height:470px;
+        max-height:680px;
+    }
+    .hero-image {
+        object-position:43% center;
+    }
+    .hero-copy {
+        left:60%;
+        top:18%;
+        width:36%;
+    }
+    .hero-copy .eyebrow {
+        margin-bottom:18px;
+    }
+    .hero-description {
+        font-size:9px;
+        margin:18px 0;
+    }
+    .hero-signature {
+        margin-top:25px;
+    }
+    .street-caption {
+        top:26%;
+        left:38%;
+        width:27%;
+    }
+    .street-caption h2 {
+        margin-bottom:9px;
+    }
+    .season-note {
+        margin:12px 0 8px;
+    }
+    .shop-section {
+        padding-top:15px;
+    }
+    .product-track {
+        gap:14px;
+    }
+    .product-card {
+        flex-basis:clamp(145px,24vw,220px);
+        width:clamp(145px,24vw,220px);
+    }
+    .product-image {
+        height:clamp(145px,25vw,230px);
+    }
+    .collection {
+        padding-bottom:24px;
+    }
+    .details-section {
+        grid-template-columns:52% 48%;
+        padding:8vw 5% 6vw;
+    }
+    .details-copy {
+        padding-left:7%;
+    }
+    .details-copy>.eyebrow {
+        margin-bottom:18px;
+    }
+    .details-copy h2 {
+        margin-bottom:17px;
+    }
+    .detail-description {
+        margin-bottom:22px;
+    }
+    .qr-link img {
+        width:58px;
+        height:58px;
+    }
+    .footer-inner {
+        padding:38px 5% 35px;
+        gap:5%;
+    }
+}
+
+/* 모바일 화면 대응 */
+@media(max-width:600px) {
+    body {
+        font-size:11px;
+    }
+    .announcement {
+        height:21px;
+    }
+    .announcement-track span {
+        font-size:7px;
+        letter-spacing:1.2px;
+    }
+    .site-header {
+        height:58px;
+        padding:0 4%;
+    }
+    .brand {
+        width:75px;
+        flex-basis:75px;
+    }
+    .header-icons {
+        gap:10px;
+    }
+    .header-icons a {
+        width:14px;
+        height:14px;
+    }
+    .header-icons img {
+        width:13px;
+        height:13px;
+    }
+    .hero {
+        height:86vw;
+        min-height:450px;
+        max-height:570px;
+    }
+    .hero-image {
+        object-position:34% center;
+    }
+    .hero-copy {
+        left:57%;
+        top:17%;
+        width:40%;
+    }
+    .hero-copy .eyebrow {
+        font-size:8px;
+        margin-bottom:14px;
+    }
+    .hero h1 {
+        font-size:clamp(21px,5.3vw,31px);
+        letter-spacing:-.05em;
+    }
+    .hero-description {
+        font-size:7px;
+        line-height:1.6;
+        margin:14px 0;
+    }
+    .text-link {
+        font-size:7px;
+        padding:5px 6px;
+        gap:5px;
+    }
+    .hero-signature {
+        font-size:18px;
+        margin-top:20px;
+    }
+    .street-story {
+        min-height:260px;
+        display:flex;
+        align-items:center;
+    }
+    .street-image {
+        width:100%;
+        height:auto;
+        object-fit:contain;
+    }
+    .street-caption {
+        top:25%;
+        left:37%;
+        width:30%;
+    }
+    .street-caption .eyebrow {
+        font-size:clamp(10px,2.7vw,15px);
+    }
+    .street-caption h2 {
+        font-size:clamp(9px,2.5vw,13px);
+        white-space:normal;
+        margin:4px 0 8px;
+    }
+    .street-caption>p:not(.eyebrow):not(.season-note) {
+        font-size:5px;
+        line-height:1.5;
+    }
+    .season-note {
+        font-size:6px;
+        margin:8px 0 6px;
+    }
+    .mini-link {
+        font-size:6px;
+        padding:4px 6px;
+    }
+    .shop-section {
+        padding:12px 0 25px;
+    }
+    .product-track {
+        gap:12px;
+        padding:0 3%;
+    }
+    .product-card {
+        flex-basis:35vw;
+        width:35vw;
+    }
+    .product-image {
+        height:36vw;
+    }
+    .product-number {
+        font-size:9px;
+        margin-top:6px;
+    }
+    .product-card h3 {
+        font-size:9px;
+        margin-top:4px;
+    }
+    .product-card p {
+        font-size:8px;
+        margin-top:5px;
+    }
+    .product-card .view {
+        font-size:8px;
+    }
+    .collection {
+        padding:0 0 20px;
+    }
+    .collection-heading {
+        margin-bottom:4px;
+    }
+    .collection-heading .eyebrow {
+        font-size:8px;
+        margin-bottom:6px;
+    }
+    .collection-heading h2 {
+        font-size:31px;
+    }
+    .collection-heading>p:last-child {
+        font-size:8px;
+        margin-top:4px;
+    }
+    .art-link {
+        font-size:6px;
+        padding:4px 5px;
+    }
+    .link-left {
+        left:3%;
+    }
+    .link-mid {
+        left:34%;
+    }
+    .link-pants {
+        left:60%;
+    }
+    .link-right {
+        right:3%;
+    }
+    .link-detail {
+        right:20%;
+    }
+    .chapter-copy {
+        left:46%;
+        top:8%;
+        max-width:45%;
+    }
+    .chapter-copy .eyebrow {
+        font-size:clamp(10px,3vw,14px);
+    }
+    .chapter-copy h2 {
+        font-size:clamp(7px,1.9vw,10px);
+        margin-top:3px;
+    }
+    .chapter-view {
+        font-size:7px;
+        right:4%;
+        top:8%;
+        gap:4px;
+    }
+    .details-section {
+        display:flex;
+        flex-direction:column;
+        padding:9vw 8% 10vw;
+        gap:24px;
+    }
+    .detail-collage {
+        width:100%;
+        max-width:460px;
+        aspect-ratio:1.05;
+    }
+    .detail-photo {
+        padding:6px;
+    }
+    .details-copy {
+        width:100%;
+        padding:0 2%;
+        display:grid;
+        grid-template-columns:1fr;
+        align-self:auto;
+    }
+    .details-copy>.eyebrow {
+        font-size:8px;
+        margin-bottom:14px;
+    }
+    .details-copy h2 {
+        font-size:22px;
+        margin-bottom:14px;
+    }
+    .detail-description {
+        font-size:10px;
+        line-height:1.7;
+        margin-bottom:18px;
+    }
+    .details-copy h3 {
+        font-size:9px;
+        margin-bottom:8px;
+    }
+    .details-copy ul {
+        font-size:9px;
+    }
+    .qr-link {
+        margin-top:18px;
+        gap:10px;
+    }
+    .qr-link img {
+        width:55px;
+        height:55px;
+    }
+    .qr-link span {
+        font-size:8px;
+    }
+   .archive-copy p {
+    font-size:clamp(8px,1vw,14px);
+    letter-spacing:.12em;
+    margin-bottom:25px;
+}
+
+.archive-copy h2 {
+    font-size:clamp(25px,4vw,50px);
+    letter-spacing:.12em;
+    font-weight:600;
+}
+
+.archive-copy span {
+    font-size:clamp(8px,1vw,14px);
+    letter-spacing:.12em;
+    margin-top:30px;
+}
+    .footer-inner {
+        grid-template-columns:1fr 1fr;
+        gap:30px 22px;
+        padding:32px 7% 28px;
+    }
+    .footer-brand {
+        grid-column:1/-1;
+    }
+    .footer-brand>img {
+        width:130px;
+        height:54px;
+        margin-bottom:12px;
+    }
+    .footer-brand p {
+        font-size:9px;
+        max-width:350px;
+    }
+    .footer-brand p+p {
+        margin-top:8px;
+    }
+    .footer-links,.footer-social {
+        gap:10px;
+    }
+    .footer-links h3,.footer-social h3 {
+        font-size:9px;
+        margin:0 0 4px;
+    }
+    .footer-links a {
+        font-size:9px;
+    }
+    .footer-social img {
+        width:16px;
+        height:16px;
+    }
+    .copyright {
+        font-size:7px;
+        padding:14px 8px;
+    }
+}
+
+/* 모션 줄이기 설정: 애니메이션에 민감한 사용자 배려 */
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior:auto;
+    }
+    .announcement-track,.product-track {
+        animation:none;
+    }
+    .mobile-nav {
+        transition:none;
+    }
+}
