@@ -45,6 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // VIEW 링크: 페이지 이동 없이 그 자리에서 한 번만 포인트 효과를 주고 끝낸다.
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest(".text-link, .mini-link, .view, .chapter-view");
+    if (!link) return;
+    event.preventDefault();
+    link.classList.remove("is-clicked");
+    void link.offsetWidth; // 효과를 처음부터 다시 재생
+    link.classList.add("is-clicked");
+    clearTimeout(link._clickTimer);
+    link._clickTimer = setTimeout(() => link.classList.remove("is-clicked"), 800);
+  });
+
   // Pause the product carousel while a visitor is using keyboard focus.
   if (productTrack) {
     productTrack.querySelectorAll("a").forEach((link) => {
