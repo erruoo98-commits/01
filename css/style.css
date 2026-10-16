@@ -39,7 +39,7 @@ a {
 
 /* 상단 프로모션 띠: 문구가 가로로 흐르는 영역 */
 .announcement{
-    height:24px;
+    height:26px;
     background:var(--brown);
     color:#fff;
     overflow:hidden;
@@ -57,7 +57,7 @@ a {
 
 .announcement-track span {
     font-size:8px;
-    letter-spacing:1.6px;
+    letter-spacing: 3px;
     padding-right:0;
     flex-shrink:0;
 }
@@ -105,7 +105,7 @@ a {
 }
 
 .main-nav a,.secondary-nav a {
-    font-size:10px;
+    font-size:12px;
     transition:opacity .2s;
 }
 
@@ -115,15 +115,15 @@ a {
 }
 
 .header-icons a {
-    width:17px;
-    height:17px;
+    width:18px;
+    height:18px;
     display:grid;
     place-items:center;
 }
 
 .header-icons img {
-    width:15px;
-    height:15px;
+    width:16px;
+    height:16px;
     object-fit:contain;
 }
 
@@ -163,7 +163,7 @@ a {
 }
 
 .eyebrow {
-    font-size:10px;
+    font-size:13px;
     letter-spacing:.06em;
 }
 
@@ -172,14 +172,14 @@ a {
 }
 
 .hero h1 {
-    font-size:clamp(28px,3.2vw,48px);
+    font-size:clamp(38px,3.8vw,58px);
     line-height:1.14;
     font-weight:600;
     letter-spacing:-.045em;
 }
 
 .hero-description {
-    font-size:10px;
+    font-size:13px;
     line-height:1.7;
     color:#55504e;
     margin:24px 0 20px;
@@ -191,7 +191,7 @@ a {
     gap:10px;
     border:1px solid #aaa5a1;
     padding:7px 10px;
-    font-size:9px;
+    font-size:10px;
     transition:background .2s,color .2s,border-color .2s;
 }
 
@@ -203,7 +203,7 @@ a {
 
 .hero-signature {
     font-family:'Cormorant Garamond',serif;
-    font-size:25px;
+    font-size:28px;
     letter-spacing:.16em;
     margin-top:38px;
 }
@@ -220,50 +220,57 @@ a {
 .street-image{
     width:100%;
     height:auto;
+    transition: transform 0.5s ease;
 }
+
+.street-image:hover {
+    transform: scale(1.03);
+}
+
 
 .street-caption {
     position:absolute;
     top:27%;
-    left:39%;
+    left:42%;
     width:25%;
     text-align:center;
 }
 
 .street-caption .eyebrow {
-    font-size:clamp(13px,1.8vw,24px);
+    font-size:clamp(13px,2vw,28px);
     font-weight:500;
-    letter-spacing:-.02em;
+    letter-spacing:-.03em;
 }
 
 .street-caption h2 {
-    font-size:clamp(13px,1.65vw,22px);
+    font-size:clamp(16px,1.8vw,26px);
     font-weight:600;
     line-height:1.25;
-    margin:5px 0 18px;
+    letter-spacing: -.03em;
+    margin:5px 0 40px;
     white-space:nowrap;
 }
 
 .street-caption>p:not(.eyebrow):not(.season-note) {
-    font-size:clamp(6px,.65vw,9px);
-    line-height:1.7;
+    font-size:clamp(10px,.75vw,16px);
+    line-height:1.9;
     color:#5f5a56;
 }
 
 .season-note {
-    font-size:clamp(7px,.75vw,10px);
+    font-size:clamp(12px,.80vw,16px);
     font-weight:600;
-    margin:20px 0 12px;
+    margin:30px 0 20px;
 }
 
 .mini-link {
-    font-size:8px;
+    font-size:10px;
     padding:5px 8px;
 }
 
 /* 상품 섹션: 상품 카드가 가로로 천천히 이동 */
 .shop-section{
-    padding:20px 0 38px;
+    padding:40px 0 45px;
     overflow:hidden;
 }
 
@@ -324,18 +331,18 @@ a {
 }
 
 .product-number {
-    font-size:11px;
+    font-size:14px;
     margin-top:9px;
 }
 
 .product-card h3 {
-    font-size:11px;
+    font-size:14px;
     margin-top:5px;
     white-space:nowrap;
 }
 
 .product-card p {
-    font-size:10px;
+    font-size:12px;
     margin-top:6px;
 }
 
@@ -344,7 +351,7 @@ a {
     border-bottom:1px solid #c8c4c0;
     padding:5px 0 3px;
     margin-top:5px;
-    font-size:9px;
+    font-size:12px;
     color:#777;
 }
 
@@ -356,17 +363,17 @@ a {
 
 /* 컬렉션 섹션: 시즌 제목과 모델 이미지 */
 .collection{
-    padding:4px 0 38px;
+    padding:8px 0 40px;
 }
 
 /* 컬렉션 제목과 시즌 텍스트 */
 .collection-heading{
     text-align:center;
-    margin-bottom:8px;
+    margin-bottom:50px;
 }
 
 .collection-heading .eyebrow {
-    margin-bottom:9px;
+    margin-bottom:7px;
 }
 
 .collection-heading h2 {
@@ -377,7 +384,8 @@ a {
 
 .collection-heading>p:last-child {
     font-size:10px;
-    margin-top:7px;
+    margin-top:8px;
+    margin-bottom: 50PX;
 }
 
 .collection-art {
@@ -389,6 +397,10 @@ a {
 .collection-art>img {
     width:100%;
     height:auto;
+    transition: transform 0.5s ease;
+}
+.collection-art> img:hover {
+    transform: scale(1.03);
 }
 
 /* 컬렉션 이미지 위에 놓이는 링크 버튼 */
@@ -399,33 +411,39 @@ a {
     padding:6px 9px;
     border:1px solid #d4d0cc;
     background:#fff;
-    font-size:9px;
+    font-size:13px;
     transition:all .2s;
 }
 
 .link-left {
-    left:5%;
-    top:40%;
+    left:10%;
+    top:50%;
 }
+
+.link-DETAILS {
+    left:20%;
+    top:88%;
+}
+
 
 .link-mid {
-    left:35%;
-    top:27%;
+    left:32%;
+    top:56%;
 }
 
-.link-pants {
-    left:61%;
-    top:47%;
+.link-Top {
+    left:60%;
+    top:35%;
 }
 
 .link-right {
-    right:5%;
-    top:29%;
+    right:8%;
+    top:50%;
 }
 
 .link-detail {
-    right:25%;
-    bottom:18%;
+    right:23%;
+    bottom:16%;
 }
 
 /* NEW CHAPTER: 에디토리얼 이미지와 안내 문구 */
@@ -438,6 +456,11 @@ a {
 .new-chapter>img {
     width:100%;
     height:auto;
+     transition: transform 0.5s ease;
+}
+
+.new-chapter>img:hover {
+   transform: translateX(-15px);
 }
 
 /* NEW CHAPTER 텍스트 및 VIEW 링크 */
@@ -464,7 +487,7 @@ a {
     position:absolute;
     right:5%;
     top:9%;
-    font-size:10px;
+    font-size:12px;
     line-height:1;
     display:flex;
     gap:8px;
@@ -499,32 +522,37 @@ a {
     padding:8px;
     background:#fff;
     box-shadow:0 2px 12px #0002;
+transition: transform 0.6s ease;
+}
+
+.detail-photo:hover {
+    transform: scale(1.06);
 }
 
 .photo-one {
-    width:56%;
+    width:50%;
     left:8%;
     top:0;
     z-index:1;
 }
 
 .photo-two {
-    width:55%;
-    left:35%;
+    width:40%;
+    left:42%;
     top:19%;
     z-index:2;
 }
 
 .photo-three {
-    width:48%;
+    width:38%;
     left:10%;
-    top:42%;
+    top:39%;
     z-index:3;
 }
 
 .photo-four {
-    width:58%;
-    left:30%;
+    width:48%;
+    left:37%;
     top:64%;
     z-index:1;
 }
@@ -535,32 +563,32 @@ a {
 }
 
 .details-copy>.eyebrow {
-    font-size:10px;
+    font-size:11px;
     margin-bottom:25px;
 }
 
 .details-copy h2 {
-    font-size:clamp(22px,2.3vw,32px);
+    font-size:clamp(25px,2.4vw,38px);
     font-weight:500;
     line-height:1.2;
     margin-bottom:24px;
 }
 
 .detail-description {
-    font-size:clamp(10px,.9vw,13px);
+    font-size:clamp(11px,.9vw,14px);
     line-height:1.8;
     color:#777;
     margin-bottom:30px;
 }
 
 .details-copy h3 {
-    font-size:10px;
+    font-size:11px;
     font-weight:600;
     margin-bottom:13px;
 }
 
 .details-copy ul {
-    font-size:10px;
+    font-size:11px;
     line-height:1.8;
 }
 
@@ -580,7 +608,7 @@ a {
 }
 
 .qr-link span {
-    font-size:9px;
+    font-size:10px;
     line-height:1.7;
     color:#8a8581;
 }
@@ -618,19 +646,25 @@ a {
 .archive-copy p {
     font-size:clamp(10px,1.4vw,20px);
     letter-spacing:.15em;
-    margin-bottom:40px;
+    margin-bottom:65px;
 }
 
 .archive-copy h2 {
     font-size:clamp(30px,5vw,68px);
     letter-spacing:.12em;
     font-weight:600;
+    transition: transform 0.6s ease;
 }
+
+.archive-copy h2:hover {
+    transform: scale(1.06);
+}
+
 
 .archive-copy span {
     font-size:clamp(10px,1.4vw,20px);
     letter-spacing:.15em;
-    margin-top:50px;
+    margin-top:75px;
 }
 
 /* 푸터: 브랜드 소개, 링크, SNS, 저작권 */
@@ -806,17 +840,21 @@ a {
     }
     .street-caption {
         top:26%;
-        left:38%;
+        left:41%;
         width:27%;
     }
     .street-caption h2 {
-        margin-bottom:9px;
+        margin-bottom:10px;
+    }
+    .street-caption P {
+        font-size: 9PX;
+        letter-spacing: -1PX;
     }
     .season-note {
-        margin:12px 0 8px;
+        margin:12px 0 10px;
     }
     .shop-section {
-        padding-top:15px;
+        padding-top:16px;
     }
     .product-track {
         gap:14px;
