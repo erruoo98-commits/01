@@ -1200,3 +1200,41 @@ transition: transform 0.6s ease;
         transition:none;
     }
 }
+
+/* VIEW 링크 클릭 포인트: 페이지 이동 없이 제자리에서 한 번만 */
+.text-link,.mini-link,.view { position:relative; }
+
+.text-link.is-clicked,
+.mini-link.is-clicked {
+    background:var(--brown);
+    color:#fff;
+    border-color:var(--brown);
+}
+
+.product-card .view.is-clicked {
+    color:var(--brown);
+    border-color:var(--brown);
+}
+
+.chapter-view.is-clicked { opacity:.55; }
+
+.is-clicked::after {
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border:1px solid var(--brown);
+    pointer-events:none;
+    animation:viewRing .7s ease-out forwards;
+}
+
+.is-clicked span { animation:viewArrow .5s ease-out; }
+
+@keyframes viewRing {
+    from { opacity:.85; transform:scale(1); }
+    to   { opacity:0;   transform:scale(1.25,1.8); }
+}
+
+@keyframes viewArrow {
+    0%,100% { transform:translateX(0); }
+    45%     { transform:translateX(7px); }
+}
